@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node start.js",
     "test": "env NODE_ENV=test NO_PROXY=localhost,127.0.0.1,0.0.0.0 ./node_modules/babel-cli/bin/babel-node.js ./node_modules/babel-istanbul/lib/cli cover --root ./app --include-all-sources --report teamcity --report cobertura --report html ./node_modules/mocha/bin/_mocha -- --require ignore-styles --require test/setup.js --recursive --check-leaks",
-    "test:unit": "env NODE_ENV=test NO_PROXY=localhost,127.0.0.1,0.0.0.0 mocha --require babel-polyfill --require babel-register --require ignore-styles --require test/setup.js --recursive --check-leaks",
+    "test:unit": "mocha --require babel-polyfill --require babel-register --require test/unit/setup.js --recursive --check-leaks",
     "lint": "eslint . ./coverage --ext .js"
   },
   "dependencies": {
@@ -32,7 +32,9 @@
     "eslint-plugin-babel": "^3.0.0",
     "mocha": "^2.4.2",
     "nock": "^7.0.2",
+    "proxyquire": "^1.7.7",
     "sinon": "^1.17.3",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.2.0"
   }
 }

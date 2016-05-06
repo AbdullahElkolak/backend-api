@@ -4,13 +4,13 @@ import https from 'https';
 // We do this to allow us to use async await with our get requests.
 export function httpGetPromise(options, resultsKey) {
     return new Promise(function(resolve, reject) {
-        const postRequest = https.request(options, function(res){
+        const getRequest = https.request(options, function(res){
             let JSONStr = "";
             res.on('data', function(JSONChunkStr) {
                 JSONStr += JSONChunkStr;
             });
 
-            if(res.statusCode == 200){
+            if(res.statusCode === 200){
                 res.on('end', function() {
                     const JSONChunk = JSON.parse(JSONStr);
 
@@ -31,10 +31,12 @@ export function httpGetPromise(options, resultsKey) {
                 });
             }
 
-        }, function(err){
+        });
+        
+        getRequest.on('error', function(err){
             reject(err);
         });
 
-        postRequest.end();
+        getRequest.end();
     });
 }

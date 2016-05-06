@@ -79,8 +79,9 @@ export default class Server {
         // Do not use this in modules, but only in applications, as otherwise we could have multiple of these bound.
         // https://nodejs.org/api/process.html#process_event_uncaughtexception
         process.on('uncaughtException', function handleUncaughtExceptions(err) {
-            // handle the error safely
+            // handle the error
             console.log('error', 'Uncaught exception:', err);
+            process.exit(1);
         });
     }
 

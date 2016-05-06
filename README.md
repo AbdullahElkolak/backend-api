@@ -3,7 +3,7 @@
 ### Instructions
 1. Ensure you have npm 5.5.0+ installed.
 
-2. In root directory (./backend-api-news), run: ```npm i```
+2. In root directory (./backend-api), run: ```npm i```
 
 3. Then run: ```npm start```
 
