@@ -1,4 +1,4 @@
-import DelegatorController from '../../../app/server/controllers/delegator';
+import DelegatorController from '../../../api/server/controllers/delegator';
 
 describe('Unit', () => {
     describe('Controller',  () => {

@@ -5,7 +5,7 @@ describe('Unit', () => {
     describe('Views', () => {
         describe('index html template', () => {
             it('has the injected value in the rendered html', () => {
-                const indexHtmlTemplate = fs.readFileSync(__dirname + '/../../../app/server/views/index.html.ejs', 'utf-8');
+                const indexHtmlTemplate = fs.readFileSync(__dirname + '/../../../api/server/views/index.html.ejs', 'utf-8');
                 const testValue = 'testValue';
 
                 expect(indexHtmlTemplate.indexOf(testValue)).eq(-1);

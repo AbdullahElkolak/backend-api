@@ -1,4 +1,4 @@
-import Server from '../../app/server/server';
+import Server from '../../api/server/server';
 import http from 'http';
 
 describe('Functional', () => {

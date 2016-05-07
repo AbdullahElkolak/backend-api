@@ -1,5 +1,5 @@
 import express from 'express';
-import routes from '../../../app/server/routes/serverRoutes';
+import routes from '../../../api/server/routes/serverRoutes';
 //import UserController from '../../../server/controllers/user';
 //import UrlUploaderController from '../../../server/controllers/urlUploader';
 //import ClientLoggerController from '../../../server/controllers/clientLogger';

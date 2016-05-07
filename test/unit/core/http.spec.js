@@ -1,4 +1,4 @@
-import { httpGetPromise } from '../../../app/server/core/http'
+import { httpGetPromise } from '../../../api/server/core/http'
 
 describe('Unit', () => {
     describe('http', () => {

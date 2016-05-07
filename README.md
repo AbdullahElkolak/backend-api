@@ -9,6 +9,8 @@
 
 4. Go to URL: ```http://localhost:3002/weather/sydney|brisbane|new york|china?json=false|true```
 
+NOTE: Tested on Macbook / Chrome ONLY (no guarantees with other browsers).
+
 ### Test (with coverage) Instructions
 1. Run ``` npm test ```
 
@@ -18,8 +20,6 @@
 ### Functional Test Instructions
 1. Run ``` npm run test:functional ```
 
-
-NOTE: Tested on Macbook / Chrome ONLY (no guarantees with other browsers).
 
 ### Future improvements
 * Kick off the server via PM2; which would monitor the instance, restart/reload it

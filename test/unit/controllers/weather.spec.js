@@ -35,7 +35,7 @@ describe('Unit', () => {
                     reject();
                 }));
 
-                const Weather = proxyquire('../../../app/server/controllers/weather', {
+                const Weather = proxyquire('../../../api/server/controllers/weather', {
                     '../core/http': {
                         httpGetPromise: httpGetPromiseStub
                     }

@@ -1,4 +1,4 @@
-import Controllers from '../../app/server/controllers';
+import Controllers from '../../api/server/controllers';
 import proxyquire from 'proxyquire';
 proxyquire.noCallThru();
 proxyquire.noPreserveCache();
@@ -10,7 +10,7 @@ describe('Unit', () => {
 
         before(() => {
             subscribeSpy = sinon.spy();
-            const Controllers = proxyquire('../../app/server/controllers', {
+            const Controllers = proxyquire('../../api/server/controllers', {
                 './controllers/delegator': () => {
                     return {
                         subscribe: subscribeSpy

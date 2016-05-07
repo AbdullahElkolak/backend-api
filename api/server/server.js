@@ -65,7 +65,7 @@ export default class Server {
     }
 
     setupErrorHandling(app) {
-        // Catch all error back end error handler (add this last, and after other app.use() and route calls).
+        // Catch all error back end error handler (add this last, and after other api.use() and route calls).
         // Note: the un-used 'next' parameter is NEEDED to signify to express that it is an error handler.
         /* eslint-disable no-unused-vars */
         app.use((err, req, res, next) => {

@@ -1,5 +1,5 @@
-import Weather from '../../../app/server/controllers/weather';
-import daysOfWeek from '../../../app/constants/daysOfWeek';
+import Weather from '../../../api/server/controllers/weather';
+import daysOfWeek from '../../../api/constants/daysOfWeek';
 
 describe('Functional', () => {
     describe('Controllers', () => {

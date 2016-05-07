@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "node start.js",
-    "test": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/babel-istanbul/lib/cli cover --root ./app --include-all-sources --report html ./node_modules/mocha/bin/_mocha -- --require test/setup.js --recursive --check-leaks",
+    "test": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/babel-istanbul/lib/cli cover --root ./api --include-all-sources --report html ./node_modules/mocha/bin/_mocha -- --require test/setup.js --recursive --check-leaks",
     "test:unit": "mocha test/unit --require babel-polyfill --require babel-register --require test/setup.js --recursive --check-leaks",
     "test:functional": "mocha test/functional --require babel-polyfill --require babel-register --require test/setup.js --recursive --check-leaks",
     "lint": "eslint . ./coverage --ext .js"
