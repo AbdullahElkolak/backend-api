@@ -66,5 +66,35 @@ describe('Unit', () => {
                     });
             });
         });
+
+        describe('/test', () => {
+            it('returns success', (done) => {
+                agent
+                    .get('/test')
+                    .expect(200)
+                    .end((err) => {
+                        if (err) {
+                            return done(err);
+                        }
+
+                        done();
+                    });
+            });
+        });
+
+        describe('/unknownPath', () => {
+            it('returns success', (done) => {
+                agent
+                    .get('/unknownPath')
+                    .expect(404)
+                    .end((err) => {
+                        if (err) {
+                            return done(err);
+                        }
+
+                        done();
+                    });
+            });
+        });
     });
 });

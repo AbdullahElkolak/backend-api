@@ -15,12 +15,12 @@ export default function serverRoutes(controllers) {
     router.get('/weather/:location/:day', weatherController.getWeather, sender);
     router.get('/weather/:location', weatherController.getWeather, sender);
 
-    router.get('/test', function(req, res) {
+    router.get('/test', (req, res) => {
         res.status(200).end();
     });
 
     // If no middleware matches, then return 404.
-    router.get((req, res) => {
+    router.get('*', (req, res) => {
         res.status(404).end('Not found.');
     });
 
