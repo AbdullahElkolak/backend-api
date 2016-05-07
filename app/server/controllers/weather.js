@@ -71,7 +71,7 @@ export default class Weather {
             let { location, day } = req.params;
 
             // Format values
-            json = json !== 'false';
+            json = (json !== 'false' && json !== false);
 
             if (day !== undefined)
                 day = day.toLowerCase();
