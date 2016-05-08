@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 //This is the function that's called when it's time to send a result back to the client.
-function sender(req, res, callback) {
+function sender(req, res) {
     return res.render('index.html.ejs', {
         data: JSON.stringify(res.result)
     });

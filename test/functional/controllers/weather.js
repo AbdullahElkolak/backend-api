@@ -1,5 +1,5 @@
 import Weather from '../../../api/server/controllers/weather';
-import daysOfWeek from '../../../api/constants/daysOfWeek';
+import daysOfWeek from '../../../api/server/constants/daysOfWeek';
 
 describe('Functional', () => {
     describe('Controllers', () => {
@@ -42,7 +42,6 @@ describe('Functional', () => {
                 it('should return result with correct location, today, and a temperature value, when today is specified (in json format)', (done) => {
                     const dateObj = new Date();
                     const currentDayNum = dateObj.getDay();
-                    const currentDay = daysOfWeek[currentDayNum];
 
                     const req = {
                         params: {
@@ -70,12 +69,13 @@ describe('Functional', () => {
                 it('should return result with correct location, yesterday\'s day, and a temperature value, when yesterday is specified (in json format)', (done) => {
                     const dateObj = new Date();
                     const currentDayNum = dateObj.getDay();
-                    const currentDay = daysOfWeek[currentDayNum];
+
+                    const yesterdayDayNum = (currentDayNum - 1 >= 0) ? currentDayNum - 1 : 6
 
                     const req = {
                         params: {
                             location: 'melbourne',
-                            day: daysOfWeek[currentDayNum - 1]
+                            day: daysOfWeek[yesterdayDayNum]
                         },
                         query: {}
                     };
@@ -88,7 +88,7 @@ describe('Functional', () => {
                         const result = res.result;
 
                         expect(result.location).to.eq('melbourne');
-                        expect(result.day).to.eq(daysOfWeek[currentDayNum - 1]);
+                        expect(result.day).to.eq(daysOfWeek[yesterdayDayNum]);
                         expect(result.temperature).to.not.be.undefined;
 
                         done();
@@ -98,7 +98,6 @@ describe('Functional', () => {
                 it('should return result with correct location, tomorrow\'s day, and a temperature value, when tomorrow is specified (in json format)', (done) => {
                     const dateObj = new Date();
                     const currentDayNum = dateObj.getDay();
-                    const currentDay = daysOfWeek[currentDayNum];
 
                     const tomorrowDayNum = (currentDayNum + 1 < 7) ? currentDayNum + 1 : 0;
 

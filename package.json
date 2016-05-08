@@ -2,11 +2,13 @@
   "name": "backend-api-news",
   "version": "0.1.0",
   "scripts": {
+    "prestart": "npm run lint && npm run test:unit",
     "start": "node start.js",
+    "start:dev": "nodemon start.js",
     "test": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/babel-istanbul/lib/cli cover --root ./api --include-all-sources --report html ./node_modules/mocha/bin/_mocha -- --require test/setup.js --recursive --check-leaks",
     "test:unit": "mocha test/unit --require babel-polyfill --require babel-register --require test/setup.js --recursive --check-leaks",
     "test:functional": "mocha test/functional --require babel-polyfill --require babel-register --require test/setup.js --recursive --check-leaks",
-    "lint": "eslint . ./coverage --ext .js"
+    "lint": "eslint ./api --ext .js"
   },
   "dependencies": {
     "babel-cli": "^6.7.5",

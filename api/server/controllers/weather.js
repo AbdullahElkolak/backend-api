@@ -1,6 +1,6 @@
 import { httpGetPromise } from '../core/http';
-import daysOfWeek from '../../constants/daysOfWeek';
-import apiKeys from '../../constants/apiKeys';
+import daysOfWeek from '../constants/daysOfWeek';
+import apiKeys from '../constants/apiKeys';
 
 export default class Weather {
     constructor(delegator) {
@@ -19,11 +19,11 @@ export default class Weather {
         const encodedLocation = encodeURIComponent(location);
 
         const getOptions = {
-            hostname: "maps.googleapis.com",
-            method: "GET",
-            path: "/maps/api/geocode/json?address=",
+            hostname: 'maps.googleapis.com',
+            method: 'GET',
+            path: '/maps/api/geocode/json?address=',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
         };
 
@@ -66,15 +66,16 @@ export default class Weather {
 
     async getWeather(req, res, next) {
         try {
-            let { json } = req.query
+            let { json } = req.query;
 
             let { location, day } = req.params;
 
             // Format values
             json = (json !== 'false' && json !== false);
 
-            if (day !== undefined)
+            if (day !== undefined) {
                 day = day.toLowerCase();
+            }
 
             // Note: if day is undefined, just provide the forecast for 1 week from today.
             // If day === 'today', provide forecast for today.
@@ -87,19 +88,20 @@ export default class Weather {
             let time = (timeMs !== '') ? `,${Math.round(timeMs / 1000)}` : timeMs;
 
             // Populate the day variable with today next week if it was previously undefined
-            if (day === undefined)
+            if (day === undefined) {
                 day = daysOfWeek[(new Date(timeMs)).getDay()];
+            }
 
             // First, get the latitude and longitude for the desired location
             const {latitude, longitude} = await this.getLatitudeLongtitude(location);
 
             // Compile the get options for this request to forecast.io
             const getOptions = {
-                hostname: "api.forecast.io",
-                method: "GET",
+                hostname: 'api.forecast.io',
+                method: 'GET',
                 path: `/forecast/${apiKeys.weather}/${latitude},${longitude}${time}?units=si`,
                 headers: {
-                    "Content-Type": "application/json"
+                    'Content-Type': 'application/json'
                 }
             };
 
@@ -124,5 +126,4 @@ export default class Weather {
             next(err);
         }
     }
-
 }
